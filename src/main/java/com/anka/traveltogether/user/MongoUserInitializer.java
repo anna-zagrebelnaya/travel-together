@@ -15,14 +15,15 @@ public class MongoUserInitializer implements SmartInitializingSingleton {
 
     @Override
     public void afterSingletonsInstantiated() {
-        User john = new User(1L, "John", "Doe", "johndoe@test.com");
-        User mary = new User(2L, "Mary", "Roe", "maryroe@test.com");
+        String password = "{bcrypt}$2a$10$x.z3t/qSakhH41wqGLW0dOxSIJkp1WSE5VG6jDyEEJttNDndhrjnu";
+        User john = new User(1L, "John", "Doe", "johndoe@test.com", password);
+        User mary = new User(2L, "Mary", "Roe", "maryroe@test.com", password);
         john.setFriends(singletonList(mary));
         mary.setFriends(singletonList(john));
 
-        User george = new User(3L, "George", "Bush", "bush@test.com");
-        User dick = new User(4L, "Dick", "Chaney", "dick@test.com");
-        User liz = new User(5L, "Liz", "Chaney", "liz@test.com");
+        User george = new User(3L, "George", "Bush", "bush@test.com", password);
+        User dick = new User(4L, "Dick", "Chaney", "dick@test.com", password);
+        User liz = new User(5L, "Liz", "Chaney", "liz@test.com", password);
         george.setFriends(asList(dick, liz));
         dick.setFriends(asList(george, liz));
         liz.setFriends(asList(dick, george));
