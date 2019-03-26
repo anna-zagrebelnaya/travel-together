@@ -1,4 +1,4 @@
-package com.anka.traveltogether;
+package com.anka.root;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

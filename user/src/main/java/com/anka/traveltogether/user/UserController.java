@@ -12,8 +12,13 @@ public class UserController {
 
     private final UserRepository users;
 
+    @GetMapping
+    Mono<User> getUserByEmail(@RequestParam String email) {
+        return users.findByEmail(email);
+    }
+
     @GetMapping("/{userId}")
-    Mono<User> getUser(@PathVariable Long userId) {
+    Mono<User> getUserById(@PathVariable Long userId) {
         return users.findById(userId);
     }
 
