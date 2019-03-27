@@ -8,22 +8,14 @@
         <artifactId>travel-together</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>root</artifactId>
+    <artifactId>tt-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>root</name>
+    <name>tt-client</name>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
     </dependencies>
 

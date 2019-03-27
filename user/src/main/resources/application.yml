@@ -5,10 +5,3 @@ logging:
     reactor:
       netty:
         channel: DEBUG
-
-spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://idp:9999/auth/realms/demo
