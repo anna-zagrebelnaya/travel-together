@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link data-th-href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link data-th-href="@{/css/main.css}" rel="stylesheet">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.css" />
+</head>
+<body>
+<div layout:fragment="content">
+<div class="container">
+
+    <div class="row">
+        <div id="title">
+            <h1>Welcome, <div th:if="${currentUser != null}" class="navbar-text px-2" th:text="${currentUser.firstName}"></div>!</h1>
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</html>

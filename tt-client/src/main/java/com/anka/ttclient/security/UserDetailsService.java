@@ -1,7 +1,7 @@
-package com.anka.traveltogether.user.security;
+package com.anka.ttclient.security;
 
-import com.anka.traveltogether.user.User;
-import com.anka.traveltogether.user.UserRepository;
+import com.anka.ttclient.user.User;
+import com.anka.ttclient.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -16,7 +16,7 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class UserDetailsService implements ReactiveUserDetailsService {
 
-    private final UserRepository users;
+    private final UserService users;
 
     @Override
     public Mono<UserDetails> findByUsername(String username) {
@@ -26,7 +26,7 @@ public class UserDetailsService implements ReactiveUserDetailsService {
     private class CustomUser extends User implements UserDetails {
 
         public CustomUser(User user) {
-            super(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword());
+            super(user);
         }
 
         @Override
