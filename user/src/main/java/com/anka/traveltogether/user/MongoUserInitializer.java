@@ -23,7 +23,7 @@ public class MongoUserInitializer implements SmartInitializingSingleton {
 
         User george = new User(3L, "George", "Bush", "bush@test.com", password);
         User dick = new User(4L, "Dick", "Chaney", "dick@test.com", password);
-        User liz = new User(5L, "Liz", "Chaney", "liz@test.com", password);
+        User liz = new User(5L, "Liz", "Chaney", "annzagrebelnaya@gmail.com", password);
         george.setFriends(asList(dick, liz));
         dick.setFriends(asList(george, liz));
         liz.setFriends(asList(dick, george));
