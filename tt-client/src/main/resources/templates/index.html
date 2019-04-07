@@ -15,7 +15,8 @@
 
     <div class="row">
         <div id="title">
-            <h1>Welcome, <div th:if="${currentUser != null}" class="navbar-text px-2" th:text="${currentUser.firstName}"></div>!</h1>
+            <!--<h1>Welcome, <div th:if="${currentUser != null}" class="navbar-text px-2" th:text="${currentUser.firstName}"></div>!</h1>-->
+            <h1>Welcome, <div class="navbar-text px-2" th:text="${#authentication.principal.attributes.name}"></div>!</h1>
         </div>
     </div>
 

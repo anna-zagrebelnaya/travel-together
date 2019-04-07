@@ -2,20 +2,15 @@ server:
   port: 8080
 logging:
   level:
-    reactor:
-      netty:
-        channel: DEBUG
-spring:
-  security:
-    oauth2:
-      client:
-        provider:
-          okta:
-            issuer-uri: https://dev-634061.okta.com/oauth2/default
-        registration:
-          okta:
-            client-id: 0oae2q0onBk8GDsve356
-            client-secret: 3si8hLYjLgVQGsnnkDa1osiXPBzh3OK2X4JyRl8o
-            scope: openid, email, profile
+    root: INFO
+    org.springframework.cloud.gateway: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+    reactor.netty.channel: INFO
+okta:
+  oauth2:
+    issuer: https://dev-634061.okta.com/oauth2/default
+    client-id: 0oae2q0onBk8GDsve356
+    client-secret: 3si8hLYjLgVQGsnnkDa1osiXPBzh3OK2X4JyRl8o
 
 users-url: localhost:8081/users

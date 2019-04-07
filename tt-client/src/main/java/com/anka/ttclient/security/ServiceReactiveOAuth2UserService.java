@@ -31,6 +31,7 @@ public class ServiceReactiveOAuth2UserService
 	@Override
 	public Mono<OidcUser> loadUser(OidcUserRequest oidcUserRequest)
 			throws OAuth2AuthenticationException {
+		System.out.println("loadUser " + oidcUserRequest);
 		return this.delegate.loadUser(oidcUserRequest).flatMap(this::create);
 	}
 

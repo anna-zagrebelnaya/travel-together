@@ -20,6 +20,7 @@ public class UserDetailsService implements ReactiveUserDetailsService {
 
     @Override
     public Mono<UserDetails> findByUsername(String username) {
+        System.out.println("findByUsername " + username);
         return users.findByEmail(username).map(CustomUser::new);
     }
 

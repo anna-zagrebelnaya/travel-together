@@ -27,6 +27,13 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <!--TODO: move versions to dep management-->
+        <dependency>
+            <groupId>com.okta.spring</groupId>
+            <artifactId>okta-spring-boot-starter</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
         <!--Thymeleaf-->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
