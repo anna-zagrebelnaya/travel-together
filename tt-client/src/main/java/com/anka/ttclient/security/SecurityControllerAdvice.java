@@ -11,7 +11,6 @@ public class SecurityControllerAdvice {
 
     @ModelAttribute("currentUser")
     Mono<User> currentUser(@AuthenticationPrincipal Mono<User> currentUser) {
-        System.out.println("curUser " + currentUser); //TODO: fix - mono is empty
         return currentUser;
     }
 }

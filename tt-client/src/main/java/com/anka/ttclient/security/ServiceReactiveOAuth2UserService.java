@@ -1,7 +1,7 @@
 package com.anka.ttclient.security;
 
 import com.anka.ttclient.user.User;
-import com.anka.ttclient.user.UserService;
+import com.anka.ttclient.user.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcReactiveOAuth2UserService;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
@@ -22,16 +22,15 @@ public class ServiceReactiveOAuth2UserService
 
 	private final OidcReactiveOAuth2UserService delegate = new OidcReactiveOAuth2UserService();
 
-	private final UserService users;
+	private final UserRepository users;
 
-	public ServiceReactiveOAuth2UserService(UserService users) {
+	public ServiceReactiveOAuth2UserService(UserRepository users) {
 		this.users = users;
 	}
 
 	@Override
 	public Mono<OidcUser> loadUser(OidcUserRequest oidcUserRequest)
 			throws OAuth2AuthenticationException {
-		System.out.println("loadUser " + oidcUserRequest);
 		return this.delegate.loadUser(oidcUserRequest).flatMap(this::create);
 	}
 
