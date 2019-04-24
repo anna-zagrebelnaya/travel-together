@@ -1,0 +1,16 @@
+server:
+  port: 9090
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+    reactor.netty.channel: DEBUG
+management.endpoints.web.exposure.include: "*"
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-634061.okta.com/oauth2/default
