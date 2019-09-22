@@ -15,8 +15,26 @@
 
     <div class="row">
         <div id="title">
+            This is user name from auth client database:
             <h1>Welcome, <div th:if="${currentUser != null}" class="navbar-text px-2" th:text="${currentUser.firstName}"></div>!</h1>
+            And this is a name of OidcUser from principal:
             <h1>Welcome, <div th:if="${#authentication != null}" class="navbar-text px-2" th:text="${#authentication.principal.attributes.name}"></div>!</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th> Friends:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="friend: ${friendsData}">
+                        <td>
+                            <span th:text="${friend.firstName}"></span>
+                            <span th:text="${friend.lastName}"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

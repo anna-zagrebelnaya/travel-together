@@ -16,12 +16,11 @@ public class WebClientFriendService implements FriendService {
         this.friendsUrl = friendsUrl;
     }
 
-    //TODO: Finalize this on friends service side and test
     @Override
-    public Flux<Friend> findByUserId(Long id) {
+    public Flux<Long> findByUserId(Long id) {
         return this.webClient.get()
-                .uri(this.friendsUrl + "/{id}", id)
+                .uri(this.friendsUrl + "?userId={id}", id)
                 .retrieve()
-                .bodyToFlux(Friend.class);
+                .bodyToFlux(Long.class);
     }
 }
