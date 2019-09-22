@@ -8,9 +8,9 @@
         <artifactId>travel-together</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>user</artifactId>
+    <artifactId>friend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>user</name>
+    <name>friend</name>
 
     <dependencies>
         <!--Spring-->
