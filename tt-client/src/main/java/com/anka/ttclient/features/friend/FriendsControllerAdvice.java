@@ -22,4 +22,9 @@ public class FriendsControllerAdvice {
                 .flatMapMany(u -> friends.findByUserId(u.getId()))
                 .flatMap(users::findById);
     }
+
+    @ModelAttribute("friend")
+    public FriendModel prepareFriendModel() {
+        return new FriendModel();
+    }
 }

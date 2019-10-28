@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Component
 public class WebClientFriendService implements FriendService {
@@ -22,5 +23,13 @@ public class WebClientFriendService implements FriendService {
                 .uri(this.friendsUrl + "?userId={id}", id)
                 .retrieve()
                 .bodyToFlux(Long.class);
+    }
+
+    @Override
+    public Mono<Void> addUserFriend(Long id, Long newFriendId) {
+        return this.webClient.post()
+                .uri(this.friendsUrl + "?userId={id}&newFriendId={newFriendId}", id, newFriendId)
+                .retrieve()
+                .bodyToMono(Void.class);
     }
 }

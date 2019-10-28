@@ -35,6 +35,13 @@
                     </tr>
                 </tbody>
             </table>
+
+            <form id="friendForm" action="#" th:action="@{/friends/create}" th:object="${friend}" method="post">
+                <span class="formSpan">
+                    <label for="friendId">Friend id:</label>
+                    <input id="friendId" type="text" th:field="*{friendId}" required="required"/>
+                </span>
+            </form>
         </div>
     </div>
 

@@ -11,6 +11,7 @@ public class SecurityConfig {
     @Bean
     SecurityWebFilterChain configure(ServerHttpSecurity http) {
         http
+                .csrf().disable()
                 .authorizeExchange()
                 .anyExchange().authenticated()
                 .and()
