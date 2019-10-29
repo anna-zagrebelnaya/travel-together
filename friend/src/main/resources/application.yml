@@ -4,4 +4,6 @@ logging:
   level:
     reactor:
       netty:
-        channel: DEBUG
+        channel: INFO
+        http:
+          client: DEBUG

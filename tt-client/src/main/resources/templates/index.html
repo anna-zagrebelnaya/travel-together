@@ -29,16 +29,21 @@
                 <tbody>
                     <tr th:each="friend: ${friendsData}">
                         <td>
-                            <span th:text="${friend.firstName}"></span>
-                            <span th:text="${friend.lastName}"></span>
+                            <form th:action="@{/friends/} + ${friend.id} + @{/delete}" th:method="post">
+                                <span th:text="${friend.firstName}"></span>
+                                <span th:text="${friend.lastName}"></span>
+                                <button th:id="'delete_friend_button_' + ${friend.id}" type="submit">
+                                    <i>X</i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-            <form id="friendForm" action="#" th:action="@{/friends/create}" th:object="${friend}" method="post">
+            <form id="friendForm" action="#" th:action="@{/friends}" th:object="${friend}" method="post">
                 <span class="formSpan">
-                    <label for="friendId">Friend id:</label>
+                    <label for="friendId">Add friend (id):</label>
                     <input id="friendId" type="text" th:field="*{friendId}" required="required"/>
                 </span>
             </form>

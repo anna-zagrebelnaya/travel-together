@@ -17,8 +17,13 @@ public class Friend {
         this.userId = userId;
     }
 
-    public Friend addFriend(Long newFriendId) {
-        friends.add(newFriendId);
+    public Friend addFriend(Long friendId) {
+        friends.add(friendId);
+        return this;
+    }
+
+    public Friend deleteFriend(Long friendId) {
+        friends.remove(friendId);
         return this;
     }
 }

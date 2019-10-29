@@ -18,17 +18,25 @@ public class WebClientFriendService implements FriendService {
     }
 
     @Override
-    public Flux<Long> findByUserId(Long id) {
+    public Flux<Long> findByUserId(Long userId) {
         return this.webClient.get()
-                .uri(this.friendsUrl + "?userId={id}", id)
+                .uri(this.friendsUrl, userId)
                 .retrieve()
                 .bodyToFlux(Long.class);
     }
 
     @Override
-    public Mono<Void> addUserFriend(Long id, Long newFriendId) {
+    public Mono<Void> addUserFriend(Long userId, Long friendId) {
         return this.webClient.post()
-                .uri(this.friendsUrl + "?userId={id}&newFriendId={newFriendId}", id, newFriendId)
+                .uri(this.friendsUrl + "/{friendId}", userId, friendId)
+                .retrieve()
+                .bodyToMono(Void.class);
+    }
+
+    @Override
+    public Mono<Void> removeUserFriend(Long userId, Long friendId) {
+        return this.webClient.delete()
+                .uri(this.friendsUrl + "/{friendId}", userId, friendId)
                 .retrieve()
                 .bodyToMono(Void.class);
     }

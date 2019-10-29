@@ -3,10 +3,15 @@ server:
 logging:
   level:
     root: INFO
+    com.anka.ttclient: DEBUG
     org.springframework.cloud.gateway: INFO
     org.springframework.security: DEBUG
     org.springframework.security.oauth2: DEBUG
-    reactor.netty.channel: DEBUG
+    reactor:
+      netty:
+        channel: INFO
+        http:
+          client: DEBUG
 spring:
   security:
     oauth2:
@@ -18,4 +23,4 @@ spring:
           okta:
             client-id: 0oae2q0onBk8GDsve356
             client-secret: 3si8hLYjLgVQGsnnkDa1osiXPBzh3OK2X4JyRl8o
-friends-url: localhost:9090/friends
+friends-url: localhost:9090/users/{userId}/friends

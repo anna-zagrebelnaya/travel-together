@@ -9,26 +9,37 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @RestController
-@RequestMapping("/friends")
+@RequestMapping("/users/{userId}/friends")
 @AllArgsConstructor
 public class FriendController {
 
     private final FriendRepository friends;
 
     @GetMapping
-    Flux<Long> getUserFriends(@RequestParam Long userId) {
+    Flux<Long> getUserFriends(@PathVariable Long userId) {
         return friends.findByUserId(userId)
                 .map(Friend::getFriends)
                 .flatMapMany(Flux::fromIterable);
     }
 
-    @PostMapping
+    @PostMapping(value = "/{friendId}")
     @ResponseStatus(HttpStatus.OK)
-    Mono<Void> addUserFriend(@RequestParam Long userId, @RequestParam Long newFriendId) {
+    Mono<Void> addUserFriend(@PathVariable Long userId, @PathVariable Long friendId) {
         return friends.findByUserId(userId)
-                .filter(friend -> !friend.getFriends().contains(newFriendId))
-                .doOnNext(f -> log.info("adding friend {}", newFriendId))
-                .map(friend -> friend.addFriend(newFriendId))
+                .filter(friend -> !friend.getFriends().contains(friendId))
+                .doOnNext(f -> log.info("adding friend {}", friendId))
+                .map(friend -> friend.addFriend(friendId))
+                .flatMap(friends::save)
+                .then();
+    }
+
+    @DeleteMapping(value = "/{friendId}")
+    @ResponseStatus(HttpStatus.OK)
+    Mono<Void> deleteUserFriend(@PathVariable Long userId, @PathVariable Long friendId) {
+        return friends.findByUserId(userId)
+                .filter(friend -> friend.getFriends().contains(friendId))
+                .doOnNext(f -> log.info("deleting friend {}", friendId))
+                .map(friend -> friend.deleteFriend(friendId))
                 .flatMap(friends::save)
                 .then();
     }
